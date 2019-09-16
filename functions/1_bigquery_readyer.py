@@ -3,6 +3,8 @@ import re
 import csv
 from datetime import datetime
 
+#Comment for git
+
 retailer = "bq"
 date = "20190801"
 lookup_dict = {} # Used for creating a lookup between the new key value and the old key value
