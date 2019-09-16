@@ -3,7 +3,7 @@ import re
 import csv
 from datetime import datetime
 
-#Comment for git
+#Comment for git, added more
 
 retailer = "bq"
 date = "20190801"
