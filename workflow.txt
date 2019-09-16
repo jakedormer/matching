@@ -1,0 +1,13 @@
+
+1) Clone the repository, specifically the develop branch. You should never touch master.
+
+> git clone -b develop https:///???????????????
+
+2) Create a branch from this for a new feature
+
+> git branch new_feature
+
+> git checkout new_feature
+
+* where new_feature is the example name given for the new branch.
+
