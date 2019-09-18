@@ -6,9 +6,7 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-fuzzywuzzy = "*"
-python-levenshtein = "*"
-recordlinkage = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.6"
