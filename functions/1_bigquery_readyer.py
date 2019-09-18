@@ -5,7 +5,7 @@ from datetime import datetime
 
 #Comment for git, added more
 
-retailer = "bq"
+retailer = "wickes"
 date = "20190801"
 lookup_dict = {} # Used for creating a lookup between the new key value and the old key value
 
