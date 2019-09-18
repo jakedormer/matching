@@ -1,0 +1,54 @@
+
+1) Clone the repository, specifically the develop branch. You should never touch master.
+
+> git clone -b develop https:///???????????????
+
+2) Create a branch from this for a new feature
+
+> git branch new_feature
+
+> git checkout new_feature
+
+* where new_feature is the example name given for the new branch.
+
+** Now you can begin working on the new features.
+
+3) In order to commit the changes to the new_feature branch.
+
+> git status     # This shows you all changes you have made
+
+> git add .      # The dot symbolises all
+
+> git commit -m"Insert Message Here"
+
+** If you need to undo a > git add, use > git reset. Commits are more tricky to undo.
+
+4) Once happy with the new_feature, swap branches back to develop and then merge new feature into develop. Lastly, delete the local "new_feature" branch.
+
+> git checkout develop
+
+> git merge new_feature
+
+> git branch -d new_feature
+
+5) Push the changes back to the remote develop branch
+
+> git push origin develop
+
+6) Changes can be merged into master using github.com
+
+
+
+Hints & Tips:
+
+In order to make sure your local repository is up to date with the latest version of develop on the remote repository, use git pull.
+
+> git pull basically does a > git fetch followed by a > git pull
+
+Should say the following:
+
+From https://github.com/jakedormer/matching
+   7dbc7cd..c575bc7  master     -> origin/master
+Already up-to-date.
+
+**   HHHaa2
