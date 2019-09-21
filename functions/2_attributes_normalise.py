@@ -62,7 +62,9 @@ def units(string):
 
 def normalise(retailer, date, brand, colour, weight):
 
-    data = pandas.read_csv('/home/jake/Documents/matching/bigquery_attribute_files/' + retailer + '_' + date + '.csv')
+    data = pandas.read_csv('/home/jake/Documents/matching/attrclean/' + retailer + "/" + retailer + '_' + date + '.csv')
+    # Changes NaN (Pandas Nulls) to actual nulls.
+    data = data.where(pandas.notnull(data), None)
     print(data)
     headers = list(data)
 
@@ -79,6 +81,9 @@ def normalise(retailer, date, brand, colour, weight):
 
             if header == "sku_1":
                 product['sku_1'] = data.loc[i, header]
+
+            if header == "sku_2":
+                product['sku_2'] = data.loc[i, header]
 
             if header == "description":
                 product['description'] = synonyms_replace(data.loc[i, header].lower())
@@ -108,8 +113,8 @@ def normalise(retailer, date, brand, colour, weight):
                 product['pack_quantity'] = data.loc[i, header]
 
 
-        with open('/home/jake/Documents/matching/bigquery_attribute_files/attr_norm_' + retailer + "_" + date + '.csv', append_write) as new_file:
-            csv_headers = ['sku_1', 'description', 'brand', 'length', 'width', 'thickness', 'colour', 'material',
+        with open('/home/jake/Documents/matching/attrnorm/' + retailer + "/" + retailer + "_" + date + '.csv', append_write) as new_file:
+            csv_headers = ['sku_1', 'sku_2', 'description', 'brand', 'length', 'width', 'thickness', 'colour', 'material',
                            'weight', 'pack_quantity']
             writer = csv.DictWriter(new_file, csv_headers)
             if i == 0:
@@ -117,6 +122,6 @@ def normalise(retailer, date, brand, colour, weight):
 
             writer.writerow(product)
 
-normalise("wickes", "20190801", brand="brand_name", colour="^colour$", weight="weight")
+normalise("wickes", "201909", brand="brand_name", colour="^colour$", weight="weight")
 
-normalise("bq", "20190801", brand="brand", colour="^colour$", weight="weight")
+normalise("bq", "201909", brand="brand", colour="^colour$", weight="weight")
