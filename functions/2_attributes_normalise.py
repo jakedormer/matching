@@ -80,6 +80,9 @@ def normalise(retailer, date, brand, colour, weight):
             if header == "sku_1":
                 product['sku_1'] = data.loc[i, header]
 
+            if header == "sku_2":
+                product['sku_2'] = data.loc[i, header]
+
             if header == "description":
                 product['description'] = synonyms_replace(data.loc[i, header].lower())
 
@@ -109,7 +112,7 @@ def normalise(retailer, date, brand, colour, weight):
 
 
         with open('/home/jake/Documents/matching/bigquery_attribute_files/attr_norm_' + retailer + "_" + date + '.csv', append_write) as new_file:
-            csv_headers = ['sku_1', 'description', 'brand', 'length', 'width', 'thickness', 'colour', 'material',
+            csv_headers = ['sku_1', 'sku_2', 'description', 'brand', 'length', 'width', 'thickness', 'colour', 'material',
                            'weight', 'pack_quantity']
             writer = csv.DictWriter(new_file, csv_headers)
             if i == 0:
